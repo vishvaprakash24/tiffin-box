@@ -8,8 +8,8 @@ const Header = () => {
                 Delicious 
             </h2>
             <h3>Food Menu</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque assumenda temporibus rerum. Similique laboriosam ut aspernatur, temporibus consequatur consequuntur eos!</p>
-            <button>View Menu</button>
+            <p>Order Foods from our website!</p>
+            <a href="#explore-menu"><button>View Menu</button></a>
         </div>
     </div>
   )

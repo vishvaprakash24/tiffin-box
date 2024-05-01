@@ -78,7 +78,7 @@ const onChangeHandler = (event)=> {
                         <option value="Salad">Salad</option>
                         <option value="Rolls">Rolls</option>
                         <option value="Deserts">Desert</option>
-                        <option value="Sandwich">andwich"</option>
+                        <option value="Sandwich">Sandwich</option>
                         <option value="Cake">Cake</option>
                         <option value="Pure Veg">Pure Veg</option>
                         <option value="Pasta">Pasta</option>
@@ -89,7 +89,7 @@ const onChangeHandler = (event)=> {
                 <div className='add-price flex-col'>
                     <p>Product price</p>
                     <input 
-                   onChange={onChangeHandler} value={data.price} type='Number' name='price' placeholder='$20' />
+                   onChange={onChangeHandler} value={data.price} type='Number' name='price' placeholder='₹20' />
                 </div>
             </div>
             <button type='submit' className='add-btn'>ADD</button>
