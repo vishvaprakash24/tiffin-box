@@ -1,4 +1,4 @@
-import React, { useState, useContext, Profiler } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
@@ -7,6 +7,7 @@ const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
+
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
@@ -55,9 +56,9 @@ const Navbar = ({ setShowLogin }) => {
             <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
           </div>
         </Link>
-        {!token ? (
+        {!token ? 
           <button onClick={() => setShowLogin(true)}>sign in</button>
-        ) : (
+         : 
           <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
             <ul className="nav-profile-dropdown">
@@ -72,7 +73,7 @@ const Navbar = ({ setShowLogin }) => {
               </li>
             </ul>
           </div>
-        )}
+        }
       </div>
     </div>
   );
