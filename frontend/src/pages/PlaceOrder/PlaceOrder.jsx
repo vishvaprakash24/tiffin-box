@@ -3,9 +3,9 @@ import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const PlaceOrder = () => {
-  const { getTotalCartAmount, token, food_list, cartItems, url } =
-    useContext(StoreContext);
+  const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
 
   const [data, setData] = useState({
     firstName: "",
@@ -38,7 +38,7 @@ const PlaceOrder = () => {
     let orderData = {
       address: data,
       items: orderItems,
-      amount: getTotalCartAmount() + 2,
+      amount: getTotalCartAmount() + 20,
     };
     let response = await axios.post(url + "/api/order/place", orderData, { headers: { token }});
     if (response.data.success) {
@@ -52,6 +52,7 @@ const PlaceOrder = () => {
   useEffect(()=>{
     if(!token){
       navigate('/cart')
+      toast.error("Create and account or login first")
     }
     else if(getTotalCartAmount()===0){
       navigate('/cart')
@@ -151,13 +152,13 @@ const PlaceOrder = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>₹{getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>₹{getTotalCartAmount() === 0 ? 0 : 20}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
               <b>
-                ₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+                ₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 20}
               </b>
             </div>
           </div>

@@ -3,66 +3,50 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
-const Navbar = ({ setShowLogin }) => {
-  const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
-  const navigate = useNavigate();
+import { toast } from "react-toastify";
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setToken("");
-    navigate("/");
-  };
+const Navbar = ({ setShowLogin }) => {
+const [menu, setMenu] = useState("home");
+const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+const navigate = useNavigate();
+
+const logout = () => {
+  localStorage.removeItem("token");
+  setToken("");
+  toast.success("Logged out successfully")
+  navigate("/");
+};
+
   return (
     <div className="navbar">
       <Link to="/">
         <img src={assets.logo} alt="" className="logo" />
       </Link>
+
       <ul className="navbar-menu">
-        <Link
-          to="/"
-          onClick={() => setMenu("home")}
-          className={menu === "home" ? "active" : ""}
-        >
-          Home
-        </Link>
-        <a
-          href="#explore-menu"
-          onClick={() => setMenu("menu")}
-          className={menu === "menu" ? "active" : ""}
-        >
-          Menu
-        </a>
-        <a
-          href="#footer"
-          onClick={() => setMenu("contact")}
-          className={menu === "contact" ? "active" : ""}
-        >
-          Contact
-        </a>
-        <a
-          href="#app-download"
-          onClick={() => setMenu("mobile-app")}
-          className={menu === "mobile-app" ? "active" : ""}
-        >
-          Mobile App
-        </a>
+        <Link to="/" onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}> Home </Link>
+        <a href="#explore-menu" onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
+        <a href="#footer" onClick={() => setMenu("contact")} className={menu === "contact" ? "active" : ""}>Contact</a>
+        <a href="#app-download" onClick={() => setMenu("mobile-app")} className={menu === "mobile-app" ? "active" : ""}> Mobile App </a>
       </ul>
+
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+        {/* <img src={assets.search_icon} className="search" alt="" /> */}
+
         <Link to="/cart">
           <div className="navbar-cart-container">
             <img src={assets.basket_icon} alt="" />
             <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
           </div>
         </Link>
-        {!token ? 
+        
+        {!token ? (
           <button onClick={() => setShowLogin(true)}>sign in</button>
-         : 
+        ) : (
           <div className="navbar-profile">
-            <img src={assets.profile_icon} alt="" />
+            <img src={assets.profile_icon} className="profile" alt="" />
             <ul className="nav-profile-dropdown">
-              <li onClick={()=>navigate('/myorders')}>
+              <li onClick={() => navigate("/myorders")}>
                 <img src={assets.bag_icon} alt="" />
                 <p>Orders</p>
               </li>
@@ -73,7 +57,7 @@ const Navbar = ({ setShowLogin }) => {
               </li>
             </ul>
           </div>
-        }
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,10 @@
 :root {
     --primary-color: #F80;
   }
+
+.search{
+    width: 18px;
+}
   
 .navbar{
     padding: 10px 30px;
@@ -36,7 +40,7 @@
 .navbar button:hover{
     background-color: #fff4f2;
 }
-
+.profile{width: 32px;}
 .navbar .active{
     padding-bottom: 1px;
     border-bottom: 2px solid #49557e;

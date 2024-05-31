@@ -2,6 +2,7 @@
 import React, {useContext, useState} from 'react'
 import "./LoginPopup.css"
 import axios from 'axios'
+import {toast} from 'react-toastify'
 
 import {assets} from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
@@ -32,8 +33,11 @@ const LoginPopup = ({setShowLogin}) => {
             setToken(response.data.token);
             localStorage.setItem("token", response.data.token);
             setShowLogin(false);
+            // alert(response.data.message);
+            toast.success(response.data.message)
         } else{
-            alert(response.data.message)
+            // alert(response.data.message)
+            toast.error(response.data.message)
         }
     }
     

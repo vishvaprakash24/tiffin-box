@@ -11,7 +11,7 @@ const Add = ({url}) => {
         name:"",
         description:"",
         price:"",
-        category:"Salad"
+        category:"Fast Food"
     })
 
 const onChangeHandler = (event)=> {
@@ -19,7 +19,6 @@ const onChangeHandler = (event)=> {
         const value= event.target.value;
         setData(data=>({...data,[name]:value}))
     }
-
 
  const onSubmitHandler = async (event) =>{
      event.preventDefault();
@@ -35,7 +34,7 @@ const onChangeHandler = (event)=> {
             name:"",
             description:"",
             price:"",
-            category:"Salad"
+            category:"Fast Food"
         })
         setImage(false)
         toast.success(response.data.message)
@@ -65,7 +64,7 @@ const onChangeHandler = (event)=> {
             </div> 
             <div className='add-product-name flex-col'>
                 <p>Product name</p>
-                <input onChange={onChangeHandler} value={data.name} type='text' name='name' placeholder='Type Here' />
+                <input onChange={onChangeHandler} value={data.name} type='text' name='name' placeholder='Type Here' required />
             </div>
             <div className='add-product-description' flex-col>
                 <p>Product description</p>
@@ -75,21 +74,20 @@ const onChangeHandler = (event)=> {
                 <div className='add-category flex-col'>
                     <p>Product category</p>
                     <select onChange={onChangeHandler} name='category'>
-                        <option value="Salad">Salad</option>
-                        <option value="Rolls">Rolls</option>
-                        <option value="Deserts">Desert</option>
-                        <option value="Sandwich">Sandwich</option>
-                        <option value="Cake">Cake</option>
-                        <option value="Pure Veg">Pure Veg</option>
-                        <option value="Pasta">Pasta</option>
-                        <option value="Noodles">Noodles</option>
-                        
+                        <option value="Fast Food">Fast Food</option>
+                        <option value="North Indian">North Indian</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="South Indian">South Indian</option>
+                        <option value="Ice Cream">Ice Cream</option>
+                        <option value="Cakes">Cake</option>
+                        <option value="Healthy">Healthy</option>
+                        <option value="Vrat">Vrat</option>
                     </select>
                 </div>
                 <div className='add-price flex-col'>
                     <p>Product price</p>
                     <input 
-                   onChange={onChangeHandler} value={data.price} type='Number' name='price' placeholder='₹20' />
+                   onChange={onChangeHandler} value={data.price} type='Number' name='price' placeholder='₹20' required />
                 </div>
             </div>
             <button type='submit' className='add-btn'>ADD</button>

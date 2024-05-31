@@ -13,8 +13,8 @@ const App = () => {
 const url = "http://localhost:4000"
 
   return (
-    <div>
-      <ToastContainer/>
+    <div><ToastContainer/>
+      
       <Navbar/>
       <hr/>
       <div className='app-content'>
